@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "german_relatives",
+  "info": {
+    "singularName": "german-relative",
+    "pluralName": "german-relatives",
+    "displayName": "germanRelative"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "surname": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "issueDate": {
+      "type": "date"
+    }
+  }
+}

@@ -775,11 +775,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToMany',
       'api::scan.scan'
     >;
-    german_deporters: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'manyToMany',
-      'api::german-deporter.german-deporter'
-    >;
     projects: Attribute.Relation<
       'plugin::users-permissions.user',
       'manyToMany',
@@ -798,6 +793,16 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'api::mid-gen.mid-gen'
     >;
+    applicant: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    customers: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::customer.customer'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -808,6 +813,360 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::users-permissions.user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiApplicantApplicant extends Schema.CollectionType {
+  collectionName: 'applicants';
+  info: {
+    singularName: 'applicant';
+    pluralName: 'applicants';
+    displayName: 'applicant';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    firstName: Attribute.String;
+    SuranameName: Attribute.String;
+    users_permissions_user: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    project: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToOne',
+      'api::project.project'
+    >;
+    customers: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::customer.customer'
+    >;
+    DateOfBirth: Attribute.Date;
+    isMinor: Attribute.Boolean;
+    previousNames: Attribute.String;
+    suranmeatBirth: Attribute.String;
+    placeOfBirth: Attribute.String;
+    sex: Attribute.Enumeration<['male', 'female', 'non-binary']>;
+    relationWithGerman: Attribute.Integer;
+    CountryOfBirth: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToOne',
+      'api::country.country'
+    >;
+    countryOfResidency: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToOne',
+      'api::country.country'
+    >;
+    currentAddress: Attribute.String;
+    hasAltAdressForPost: Attribute.Boolean & Attribute.DefaultTo<false>;
+    alternateAdress: Attribute.String;
+    phoneNumber: Attribute.String;
+    email: Attribute.Email;
+    citizenships: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToMany',
+      'api::citizenship.citizenship'
+    >;
+    maritalStatus: Attribute.Enumeration<
+      [
+        'single',
+        'married',
+        'divorced',
+        'widowed',
+        'inasameSexCivilPartnership',
+        'sameSexCivilPartnershipDissolved',
+        'others'
+      ]
+    >;
+    otherForMarialStatus: Attribute.String;
+    currentMariageSince: Attribute.Date;
+    previous_marriges: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToMany',
+      'api::previous-marrige.previous-marrige'
+    >;
+    hasCriminalRecord: Attribute.Boolean;
+    hasCriminalOpenCase: Attribute.Boolean;
+    places_of_residances: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToMany',
+      'api::places-of-residance.places-of-residance'
+    >;
+    germanyAddresForGermanDeported: Attribute.String;
+    original_citizen: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    relativeGerma: Attribute.Component<'ui.relative-german', true>;
+    isAdopted: Attribute.Boolean;
+    dateOfAdoption: Attribute.Date;
+    relativesNotGerman: Attribute.Component<'ui.relatives-not', true>;
+    fileNumberInLawyer: Attribute.String;
+    submissionDate: Attribute.Date;
+    fileNumberInOthorities: Attribute.String;
+    e15form: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    attach: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    birthCertificate: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    marriage_certificate: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    marriage_certificate_translate: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    divorce_certifacates: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToMany',
+      'api::scan.scan'
+    >;
+    divorce_certifacate_translate: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    tamtzit: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    name_change_cert: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    general_other_doc: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToMany',
+      'api::scan.scan'
+    >;
+    ReferenceCriminalRecord: Attribute.String;
+    PowerOfAttornyLawyer: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    power_of_attorny_kid: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    phisical_birth_cert: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    original_copy_of_m_cerf: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    signed_translated_m_cert: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    d_cert_phisical_doc: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    phisical_doc_cert_d_trans: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCitizenshipCitizenship extends Schema.CollectionType {
+  collectionName: 'citizenships';
+  info: {
+    singularName: 'citizenship';
+    pluralName: 'citizenships';
+    displayName: 'citizenship';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    country: Attribute.Relation<
+      'api::citizenship.citizenship',
+      'manyToOne',
+      'api::country.country'
+    >;
+    acquisitionDate: Attribute.Date;
+    acquiringReason: Attribute.Enumeration<['ancestry', 'naturalization']>;
+    isValide: Attribute.Boolean & Attribute.DefaultTo<true>;
+    applicant: Attribute.Relation<
+      'api::citizenship.citizenship',
+      'manyToOne',
+      'api::applicant.applicant'
+    >;
+    relative: Attribute.Relation<
+      'api::citizenship.citizenship',
+      'manyToOne',
+      'api::relative.relative'
+    >;
+    passport: Attribute.Relation<
+      'api::citizenship.citizenship',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::citizenship.citizenship',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::citizenship.citizenship',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCountryCountry extends Schema.CollectionType {
+  collectionName: 'countries';
+  info: {
+    singularName: 'country';
+    pluralName: 'countries';
+    displayName: 'country';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    applicants: Attribute.Relation<
+      'api::country.country',
+      'oneToMany',
+      'api::applicant.applicant'
+    >;
+    citizenships: Attribute.Relation<
+      'api::country.country',
+      'oneToMany',
+      'api::citizenship.citizenship'
+    >;
+    places_of_residances: Attribute.Relation<
+      'api::country.country',
+      'oneToMany',
+      'api::places-of-residance.places-of-residance'
+    >;
+    relatives: Attribute.Relation<
+      'api::country.country',
+      'oneToMany',
+      'api::relative.relative'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::country.country',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::country.country',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCustomerCustomer extends Schema.CollectionType {
+  collectionName: 'customers';
+  info: {
+    singularName: 'customer';
+    pluralName: 'customers';
+    displayName: 'customer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    firstName: Attribute.String;
+    applicants: Attribute.Relation<
+      'api::customer.customer',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
+    users_permissions_users: Attribute.Relation<
+      'api::customer.customer',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    projects: Attribute.Relation<
+      'api::customer.customer',
+      'manyToMany',
+      'api::project.project'
+    >;
+    lastName: Attribute.String;
+    phoneNumber: Attribute.String;
+    email: Attribute.Email;
+    refferers: Attribute.Relation<
+      'api::customer.customer',
+      'manyToMany',
+      'api::refferer.refferer'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::customer.customer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::customer.customer',
       'oneToOne',
       'admin::user'
     > &
@@ -832,6 +1191,11 @@ export interface ApiFileKindFileKind extends Schema.CollectionType {
       'manyToMany',
       'api::scan.scan'
     >;
+    phisical_docs: Attribute.Relation<
+      'api::file-kind.file-kind',
+      'oneToMany',
+      'api::phisical-doc.phisical-doc'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -850,35 +1214,70 @@ export interface ApiFileKindFileKind extends Schema.CollectionType {
   };
 }
 
-export interface ApiGermanDeporterGermanDeporter extends Schema.CollectionType {
-  collectionName: 'german_deporters';
+export interface ApiFirstPersonInGermanyFirstPersonInGermany
+  extends Schema.CollectionType {
+  collectionName: 'first_person_in_germanies';
   info: {
-    singularName: 'german-deporter';
-    pluralName: 'german-deporters';
-    displayName: 'germanDeporter';
-    description: '';
+    singularName: 'first-person-in-germany';
+    pluralName: 'first-person-in-germanies';
+    displayName: 'firstPersonInGermany';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String;
-    users_permissions_users: Attribute.Relation<
-      'api::german-deporter.german-deporter',
-      'manyToMany',
-      'plugin::users-permissions.user'
+    birthDate: Attribute.Date;
+    address: Attribute.String;
+    dateOfArrival: Attribute.Date;
+    original_citizens: Attribute.Relation<
+      'api::first-person-in-germany.first-person-in-germany',
+      'oneToMany',
+      'api::original-citizen.original-citizen'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::german-deporter.german-deporter',
+      'api::first-person-in-germany.first-person-in-germany',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::german-deporter.german-deporter',
+      'api::first-person-in-germany.first-person-in-germany',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGermanRelativeGermanRelative extends Schema.CollectionType {
+  collectionName: 'german_relatives';
+  info: {
+    singularName: 'german-relative';
+    pluralName: 'german-relatives';
+    displayName: 'germanRelative';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    surname: Attribute.String;
+    firstName: Attribute.String;
+    issueDate: Attribute.Date;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::german-relative.german-relative',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::german-relative.german-relative',
       'oneToOne',
       'admin::user'
     > &
@@ -915,6 +1314,76 @@ export interface ApiMidGenMidGen extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    attach: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    birthCertificate: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    marriage_certificate: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    marriage_certificate_translate: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    divorce_certifacate_translate: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToMany',
+      'api::scan.scan'
+    >;
+    divorce_certifacate: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToMany',
+      'api::scan.scan'
+    >;
+    tamtzit: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    name_change_cert: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    deth_cert: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    phisical_birth_cert: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    original_copy_of_m_cerf: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    signed_translated_m_cert: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    d_cert_phisical_doc: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    d_cert_trans_phisical_doc: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -933,12 +1402,515 @@ export interface ApiMidGenMidGen extends Schema.CollectionType {
   };
 }
 
+export interface ApiOriginalCitizenOriginalCitizen
+  extends Schema.CollectionType {
+  collectionName: 'original_citizens';
+  info: {
+    singularName: 'original-citizen';
+    pluralName: 'original-citizens';
+    displayName: 'originalCitizen';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    suraname: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    firstName: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    reasonForPersecution: Attribute.Enumeration<
+      ['alsJ\u00FCdinVerfogt', 'alsJ\u00FCdinVerfolgt']
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    applicants: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToMany',
+      'api::applicant.applicant'
+    >;
+    PersonHaveGermanCitizenshipBetween1933and1945: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    WasLostOn: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ReasonForLoss: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    excludedFromCollectiveNaturalization: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    dateOfExclusion: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    areaOfExclusion: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    applicationDenied: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    dateOfDenial: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cityOfAuthority: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    projects: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToMany',
+      'api::project.project'
+    >;
+    otherHatInDeutschland: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    residenceInGermany: Attribute.Enumeration<['always', 'since', 'unknown']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    first_person_in_germany: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'manyToOne',
+      'api::first-person-in-germany.first-person-in-germany'
+    >;
+    birth_certificate: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    marriage_certificate: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    marriage_certificate_translate: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    divorce_certifacate: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToMany',
+      'api::scan.scan'
+    >;
+    divorce_certifacate_translate: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToMany',
+      'api::scan.scan'
+    >;
+    proofof33_45residancy: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    citizeship_doc: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    otherDocs_archive: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'manyToMany',
+      'api::scan.scan'
+    >;
+    tamtzit: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    name_change_cert: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    deth_certificate: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    general_other_doc: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToMany',
+      'api::scan.scan'
+    >;
+    phisical_birth_cert: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    initialInquiryScanBirth: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    requestSentScanBirth: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    scanRecivedBirth: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    meldungs_karte_scans: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToMany',
+      'api::scan.scan'
+    >;
+    original_copy_of_m_cerf: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    signed_translated_m_cert: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    initialInquiryScanMerriage: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    requestSentScanMarriege: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    scanRecivedMarriege: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    d_cert: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    phisical_doc_cert_d_trans: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    maidenName: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    birthDate: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    links: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    info: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::original-citizen.original-citizen',
+      'oneToMany',
+      'api::original-citizen.original-citizen'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiPhisicalDocPhisicalDoc extends Schema.CollectionType {
+  collectionName: 'phisical_docs';
+  info: {
+    singularName: 'phisical-doc';
+    pluralName: 'phisical-docs';
+    displayName: 'phisicalDoc';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    file_kind: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'manyToOne',
+      'api::file-kind.file-kind'
+    >;
+    arrived: Attribute.Boolean;
+    arriveInIsrael: Attribute.Boolean;
+    sendedToAuthorities: Attribute.Boolean;
+    sendedToTranslate: Attribute.Boolean;
+    applicant_phisical_birth_cert: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    mid_gen_phisical_birth_cert: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    original_citizen_phisical_birth_cert: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    original_copy_of_m_cerf_applicant: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    original_copy_of_m_cerf_mid_gen: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    original_copy_of_m_cerf_original_citizen: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    applicant_signed_translated_m_cert: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    signed_translated_m_cert_mid_gen: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    signed_translated_m_cert_original_citizen: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    d_cert_original_citizen: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    d_cert_applicant: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    d_cert_mid_gen: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    d_cert_trans_mid_gen: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    cert_d_trans_original_citizen: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    cert_d_trans_applicant: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    birth_cert_relative: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'api::relative.relative'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::phisical-doc.phisical-doc',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPlacesOfResidancePlacesOfResidance
+  extends Schema.CollectionType {
+  collectionName: 'places_of_residances';
+  info: {
+    singularName: 'places-of-residance';
+    pluralName: 'places-of-residances';
+    displayName: 'placesOfResidance';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    country: Attribute.Relation<
+      'api::places-of-residance.places-of-residance',
+      'manyToOne',
+      'api::country.country'
+    >;
+    city: Attribute.String;
+    since: Attribute.Date;
+    until: Attribute.Date;
+    applicant: Attribute.Relation<
+      'api::places-of-residance.places-of-residance',
+      'manyToOne',
+      'api::applicant.applicant'
+    >;
+    relative: Attribute.Relation<
+      'api::places-of-residance.places-of-residance',
+      'manyToOne',
+      'api::relative.relative'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::places-of-residance.places-of-residance',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::places-of-residance.places-of-residance',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPreviousMarrigePreviousMarrige
+  extends Schema.CollectionType {
+  collectionName: 'previous_marriges';
+  info: {
+    singularName: 'previous-marrige';
+    pluralName: 'previous-marriges';
+    displayName: 'previousMarrige';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    from: Attribute.Date;
+    until: Attribute.Date;
+    applicant: Attribute.Relation<
+      'api::previous-marrige.previous-marrige',
+      'manyToOne',
+      'api::applicant.applicant'
+    >;
+    relative: Attribute.Relation<
+      'api::previous-marrige.previous-marrige',
+      'manyToOne',
+      'api::relative.relative'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::previous-marrige.previous-marrige',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::previous-marrige.previous-marrige',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
     singularName: 'project';
     pluralName: 'projects';
     displayName: 'project';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -955,6 +1927,26 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::scan.scan'
     >;
     allScansUploadedAndChecked: Attribute.Boolean & Attribute.DefaultTo<false>;
+    applicants: Attribute.Relation<
+      'api::project.project',
+      'oneToMany',
+      'api::applicant.applicant'
+    >;
+    customers: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::customer.customer'
+    >;
+    original_citizen: Attribute.Relation<
+      'api::project.project',
+      'manyToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    ArchivesVollmacht: Attribute.Relation<
+      'api::project.project',
+      'oneToMany',
+      'api::scan.scan'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -966,6 +1958,124 @@ export interface ApiProjectProject extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReffererRefferer extends Schema.CollectionType {
+  collectionName: 'refferers';
+  info: {
+    singularName: 'refferer';
+    pluralName: 'refferers';
+    displayName: 'refferer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    customers: Attribute.Relation<
+      'api::refferer.refferer',
+      'manyToMany',
+      'api::customer.customer'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::refferer.refferer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::refferer.refferer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRelativeRelative extends Schema.CollectionType {
+  collectionName: 'relatives';
+  info: {
+    singularName: 'relative';
+    pluralName: 'relatives';
+    displayName: 'relative';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    surName: Attribute.String;
+    firstName: Attribute.String;
+    previousNames: Attribute.String;
+    birthDate: Attribute.Date;
+    cityOfBirth: Attribute.String;
+    birthCountry: Attribute.Relation<
+      'api::relative.relative',
+      'manyToOne',
+      'api::country.country'
+    >;
+    previous_marriges: Attribute.Relation<
+      'api::relative.relative',
+      'oneToMany',
+      'api::previous-marrige.previous-marrige'
+    >;
+    citizenships: Attribute.Relation<
+      'api::relative.relative',
+      'oneToMany',
+      'api::citizenship.citizenship'
+    >;
+    places_of_residances: Attribute.Relation<
+      'api::relative.relative',
+      'oneToMany',
+      'api::places-of-residance.places-of-residance'
+    >;
+    dateOfDeth: Attribute.Date;
+    proofof33_45residancy: Attribute.Relation<
+      'api::relative.relative',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    general_cert: Attribute.Relation<
+      'api::relative.relative',
+      'oneToMany',
+      'api::scan.scan'
+    >;
+    MeldungsKarte_doc: Attribute.Relation<
+      'api::relative.relative',
+      'oneToMany',
+      'api::scan.scan'
+    >;
+    scan_birth_cert: Attribute.Relation<
+      'api::relative.relative',
+      'oneToOne',
+      'api::scan.scan'
+    >;
+    phisical_doc_birth_cert: Attribute.Relation<
+      'api::relative.relative',
+      'oneToOne',
+      'api::phisical-doc.phisical-doc'
+    >;
+    links: Attribute.Text;
+    info: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::relative.relative',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::relative.relative',
       'oneToOne',
       'admin::user'
     > &
@@ -1019,6 +2129,206 @@ export interface ApiScanScan extends Schema.CollectionType {
     >;
     uploaded: Attribute.Boolean;
     approved: Attribute.Boolean;
+    applicant: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    mid_gen: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    attached: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    birthSertifacteApplicant: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    original_citizen_birth_certificate: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    mid_gen_birthCertificate: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    passport_scan: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::citizenship.citizenship'
+    >;
+    marriage_certificate_applicant: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    marriage_certificate_midgen: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    marriage_certificate_original_citizen: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    original_citizen_marriage_certificate_translate: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    mid_gen_marriage_certificate_translate: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    applicant_marriage_certificate_translate: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    applicant_divorce_certifacate: Attribute.Relation<
+      'api::scan.scan',
+      'manyToOne',
+      'api::applicant.applicant'
+    >;
+    applicant_divorce_certifacate_translate: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    mid_gen_divorce_certifacate_translate: Attribute.Relation<
+      'api::scan.scan',
+      'manyToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    mid_gen_divorce_certifacate: Attribute.Relation<
+      'api::scan.scan',
+      'manyToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    original_citizen_divorce_certifacate: Attribute.Relation<
+      'api::scan.scan',
+      'manyToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    original_citizen_divorce_certifacate_translate: Attribute.Relation<
+      'api::scan.scan',
+      'manyToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    original_citizen_proofof33_45residancy: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    relative_proofof33_45residancy: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::relative.relative'
+    >;
+    citizeship_doc_original_citizen: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    other_archive_original_citizens: Attribute.Relation<
+      'api::scan.scan',
+      'manyToMany',
+      'api::original-citizen.original-citizen'
+    >;
+    applicant_tamtzit: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    tamtzit_mid_gen: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    tamtzit_original_citizen: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    name_change_cert_applicant: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    name_change_cert_mid_gen: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    name_change_cert_original_citizen: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    deth_cert_mid_gen: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::mid-gen.mid-gen'
+    >;
+    deth_cert_original_citizen: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    general_other_doc_applicant: Attribute.Relation<
+      'api::scan.scan',
+      'manyToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    applicant_general_other_doc: Attribute.Relation<
+      'api::scan.scan',
+      'manyToOne',
+      'api::applicant.applicant'
+    >;
+    relative_general_cert: Attribute.Relation<
+      'api::scan.scan',
+      'manyToOne',
+      'api::relative.relative'
+    >;
+    applicant_PowerOfAttornyLawyer: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    project_ArchivesVollmacht: Attribute.Relation<
+      'api::scan.scan',
+      'manyToOne',
+      'api::project.project'
+    >;
+    applicant_PowerOfAttornyKid: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::applicant.applicant'
+    >;
+    MeldungsKarte_original_citizen: Attribute.Relation<
+      'api::scan.scan',
+      'manyToOne',
+      'api::original-citizen.original-citizen'
+    >;
+    MeldungsKarte_relative: Attribute.Relation<
+      'api::scan.scan',
+      'manyToOne',
+      'api::relative.relative'
+    >;
+    birth_cert_relative: Attribute.Relation<
+      'api::scan.scan',
+      'oneToOne',
+      'api::relative.relative'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1047,10 +2357,21 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::applicant.applicant': ApiApplicantApplicant;
+      'api::citizenship.citizenship': ApiCitizenshipCitizenship;
+      'api::country.country': ApiCountryCountry;
+      'api::customer.customer': ApiCustomerCustomer;
       'api::file-kind.file-kind': ApiFileKindFileKind;
-      'api::german-deporter.german-deporter': ApiGermanDeporterGermanDeporter;
+      'api::first-person-in-germany.first-person-in-germany': ApiFirstPersonInGermanyFirstPersonInGermany;
+      'api::german-relative.german-relative': ApiGermanRelativeGermanRelative;
       'api::mid-gen.mid-gen': ApiMidGenMidGen;
+      'api::original-citizen.original-citizen': ApiOriginalCitizenOriginalCitizen;
+      'api::phisical-doc.phisical-doc': ApiPhisicalDocPhisicalDoc;
+      'api::places-of-residance.places-of-residance': ApiPlacesOfResidancePlacesOfResidance;
+      'api::previous-marrige.previous-marrige': ApiPreviousMarrigePreviousMarrige;
       'api::project.project': ApiProjectProject;
+      'api::refferer.refferer': ApiReffererRefferer;
+      'api::relative.relative': ApiRelativeRelative;
       'api::scan.scan': ApiScanScan;
     }
   }

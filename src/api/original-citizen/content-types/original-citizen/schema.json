@@ -1,0 +1,347 @@
+{
+  "kind": "collectionType",
+  "collectionName": "original_citizens",
+  "info": {
+    "singularName": "original-citizen",
+    "pluralName": "original-citizens",
+    "displayName": "originalCitizen",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "suraname": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "firstName": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "reasonForPersecution": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "alsJüdinVerfogt",
+        "alsJüdinVerfolgt"
+      ]
+    },
+    "applicants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::applicant.applicant",
+      "mappedBy": "original_citizen"
+    },
+    "PersonHaveGermanCitizenshipBetween1933and1945": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean"
+    },
+    "WasLostOn": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "ReasonForLoss": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "excludedFromCollectiveNaturalization": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean"
+    },
+    "dateOfExclusion": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "areaOfExclusion": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "applicationDenied": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean"
+    },
+    "dateOfDenial": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "cityOfAuthority": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project",
+      "mappedBy": "original_citizen"
+    },
+    "otherHatInDeutschland": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean"
+    },
+    "residenceInGermany": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "always",
+        "since",
+        "unknown"
+      ]
+    },
+    "first_person_in_germany": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::first-person-in-germany.first-person-in-germany",
+      "inversedBy": "original_citizens"
+    },
+    "birth_certificate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "original_citizen_birth_certificate"
+    },
+    "marriage_certificate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "marriage_certificate_original_citizen"
+    },
+    "marriage_certificate_translate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "original_citizen_marriage_certificate_translate"
+    },
+    "divorce_certifacate": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scan.scan",
+      "mappedBy": "original_citizen_divorce_certifacate"
+    },
+    "divorce_certifacate_translate": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scan.scan",
+      "mappedBy": "original_citizen_divorce_certifacate_translate"
+    },
+    "proofof33_45residancy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "original_citizen_proofof33_45residancy"
+    },
+    "citizeship_doc": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "citizeship_doc_original_citizen"
+    },
+    "otherDocs_archive": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::scan.scan",
+      "inversedBy": "other_archive_original_citizens"
+    },
+    "tamtzit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "tamtzit_original_citizen"
+    },
+    "name_change_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "name_change_cert_original_citizen"
+    },
+    "deth_certificate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "deth_cert_original_citizen"
+    },
+    "general_other_doc": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scan.scan",
+      "mappedBy": "general_other_doc_applicant"
+    },
+    "phisical_birth_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "original_citizen_phisical_birth_cert"
+    },
+    "initialInquiryScanBirth": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean"
+    },
+    "requestSentScanBirth": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean"
+    },
+    "scanRecivedBirth": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean"
+    },
+    "meldungs_karte_scans": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scan.scan",
+      "mappedBy": "MeldungsKarte_original_citizen"
+    },
+    "original_copy_of_m_cerf": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "original_copy_of_m_cerf_original_citizen"
+    },
+    "signed_translated_m_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "signed_translated_m_cert_original_citizen"
+    },
+    "initialInquiryScanMerriage": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean"
+    },
+    "requestSentScanMarriege": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean"
+    },
+    "scanRecivedMarriege": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean"
+    },
+    "d_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "d_cert_original_citizen"
+    },
+    "phisical_doc_cert_d_trans": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "cert_d_trans_original_citizen"
+    },
+    "maidenName": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "birthDate": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "links": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "info": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    }
+  }
+}

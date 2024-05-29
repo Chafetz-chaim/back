@@ -1,0 +1,277 @@
+{
+  "kind": "collectionType",
+  "collectionName": "applicants",
+  "info": {
+    "singularName": "applicant",
+    "pluralName": "applicants",
+    "displayName": "applicant",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "SuranameName": {
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "applicant"
+    },
+    "project": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::project.project",
+      "inversedBy": "applicants"
+    },
+    "customers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::customer.customer",
+      "mappedBy": "applicants"
+    },
+    "DateOfBirth": {
+      "type": "date"
+    },
+    "isMinor": {
+      "type": "boolean"
+    },
+    "previousNames": {
+      "type": "string"
+    },
+    "suranmeatBirth": {
+      "type": "string"
+    },
+    "placeOfBirth": {
+      "type": "string"
+    },
+    "sex": {
+      "type": "enumeration",
+      "enum": [
+        "male",
+        "female",
+        "non-binary"
+      ]
+    },
+    "relationWithGerman": {
+      "type": "integer"
+    },
+    "CountryOfBirth": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::country.country",
+      "inversedBy": "applicants"
+    },
+    "countryOfResidency": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::country.country",
+      "inversedBy": "applicants"
+    },
+    "currentAddress": {
+      "type": "string"
+    },
+    "hasAltAdressForPost": {
+      "type": "boolean",
+      "default": false
+    },
+    "alternateAdress": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "citizenships": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::citizenship.citizenship",
+      "mappedBy": "applicant"
+    },
+    "maritalStatus": {
+      "type": "enumeration",
+      "enum": [
+        "single",
+        "married",
+        "divorced",
+        "widowed",
+        "inasameSexCivilPartnership",
+        "sameSexCivilPartnershipDissolved",
+        "others"
+      ]
+    },
+    "otherForMarialStatus": {
+      "type": "string"
+    },
+    "currentMariageSince": {
+      "type": "date"
+    },
+    "previous_marriges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::previous-marrige.previous-marrige",
+      "mappedBy": "applicant"
+    },
+    "hasCriminalRecord": {
+      "type": "boolean"
+    },
+    "hasCriminalOpenCase": {
+      "type": "boolean"
+    },
+    "places_of_residances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::places-of-residance.places-of-residance",
+      "mappedBy": "applicant"
+    },
+    "germanyAddresForGermanDeported": {
+      "type": "string"
+    },
+    "original_citizen": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::original-citizen.original-citizen",
+      "inversedBy": "applicants"
+    },
+    "relativeGerma": {
+      "displayName": "relativeGerman",
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.relative-german"
+    },
+    "isAdopted": {
+      "type": "boolean"
+    },
+    "dateOfAdoption": {
+      "type": "date"
+    },
+    "relativesNotGerman": {
+      "displayName": "relativesNot",
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.relatives-not"
+    },
+    "fileNumberInLawyer": {
+      "type": "string"
+    },
+    "submissionDate": {
+      "type": "date"
+    },
+    "fileNumberInOthorities": {
+      "type": "string"
+    },
+    "e15form": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "applicant"
+    },
+    "attach": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "attached"
+    },
+    "birthCertificate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "birthSertifacteApplicant"
+    },
+    "marriage_certificate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "marriage_certificate_applicant"
+    },
+    "marriage_certificate_translate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "applicant_marriage_certificate_translate"
+    },
+    "divorce_certifacates": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scan.scan",
+      "mappedBy": "applicant_divorce_certifacate"
+    },
+    "divorce_certifacate_translate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "applicant_divorce_certifacate_translate"
+    },
+    "tamtzit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "applicant_tamtzit"
+    },
+    "name_change_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "name_change_cert_applicant"
+    },
+    "general_other_doc": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scan.scan",
+      "mappedBy": "applicant_general_other_doc"
+    },
+    "ReferenceCriminalRecord": {
+      "type": "string"
+    },
+    "PowerOfAttornyLawyer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "applicant_PowerOfAttornyLawyer"
+    },
+    "power_of_attorny_kid": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "applicant_PowerOfAttornyKid"
+    },
+    "phisical_birth_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "applicant_phisical_birth_cert"
+    },
+    "original_copy_of_m_cerf": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "original_copy_of_m_cerf_applicant"
+    },
+    "signed_translated_m_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "applicant_signed_translated_m_cert"
+    },
+    "d_cert_phisical_doc": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "d_cert_applicant"
+    },
+    "phisical_doc_cert_d_trans": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "cert_d_trans_applicant"
+    }
+  }
+}

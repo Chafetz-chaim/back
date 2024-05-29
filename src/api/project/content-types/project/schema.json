@@ -4,7 +4,8 @@
   "info": {
     "singularName": "project",
     "pluralName": "projects",
-    "displayName": "project"
+    "displayName": "project",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,6 +27,30 @@
     "allScansUploadedAndChecked": {
       "type": "boolean",
       "default": false
+    },
+    "applicants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::applicant.applicant",
+      "mappedBy": "project"
+    },
+    "customers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::customer.customer",
+      "mappedBy": "projects"
+    },
+    "original_citizen": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::original-citizen.original-citizen",
+      "inversedBy": "projects"
+    },
+    "ArchivesVollmacht": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scan.scan",
+      "mappedBy": "project_ArchivesVollmacht"
     }
   }
 }

@@ -66,6 +66,246 @@
     },
     "approved": {
       "type": "boolean"
+    },
+    "applicant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "e15form"
+    },
+    "mid_gen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "attach"
+    },
+    "attached": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "attach"
+    },
+    "birthSertifacteApplicant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "birthCertificate"
+    },
+    "original_citizen_birth_certificate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "birth_certificate"
+    },
+    "mid_gen_birthCertificate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "birthCertificate"
+    },
+    "passport_scan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::citizenship.citizenship",
+      "mappedBy": "passport"
+    },
+    "marriage_certificate_applicant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "marriage_certificate"
+    },
+    "marriage_certificate_midgen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "marriage_certificate"
+    },
+    "marriage_certificate_original_citizen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "marriage_certificate"
+    },
+    "original_citizen_marriage_certificate_translate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "marriage_certificate_translate"
+    },
+    "mid_gen_marriage_certificate_translate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "marriage_certificate_translate"
+    },
+    "applicant_marriage_certificate_translate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "marriage_certificate_translate"
+    },
+    "applicant_divorce_certifacate": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::applicant.applicant",
+      "inversedBy": "divorce_certifacates"
+    },
+    "applicant_divorce_certifacate_translate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "divorce_certifacate_translate"
+    },
+    "mid_gen_divorce_certifacate_translate": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mid-gen.mid-gen",
+      "inversedBy": "divorce_certifacate_translate"
+    },
+    "mid_gen_divorce_certifacate": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mid-gen.mid-gen",
+      "inversedBy": "divorce_certifacate"
+    },
+    "original_citizen_divorce_certifacate": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::original-citizen.original-citizen",
+      "inversedBy": "divorce_certifacate"
+    },
+    "original_citizen_divorce_certifacate_translate": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::original-citizen.original-citizen",
+      "inversedBy": "divorce_certifacate_translate"
+    },
+    "original_citizen_proofof33_45residancy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "proofof33_45residancy"
+    },
+    "relative_proofof33_45residancy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::relative.relative",
+      "mappedBy": "proofof33_45residancy"
+    },
+    "citizeship_doc_original_citizen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "citizeship_doc"
+    },
+    "other_archive_original_citizens": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "otherDocs_archive"
+    },
+    "applicant_tamtzit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "tamtzit"
+    },
+    "tamtzit_mid_gen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "tamtzit"
+    },
+    "tamtzit_original_citizen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "tamtzit"
+    },
+    "name_change_cert_applicant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "name_change_cert"
+    },
+    "name_change_cert_mid_gen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "name_change_cert"
+    },
+    "name_change_cert_original_citizen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "name_change_cert"
+    },
+    "deth_cert_mid_gen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "deth_cert"
+    },
+    "deth_cert_original_citizen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "deth_certificate"
+    },
+    "general_other_doc_applicant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::original-citizen.original-citizen",
+      "inversedBy": "general_other_doc"
+    },
+    "applicant_general_other_doc": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::applicant.applicant",
+      "inversedBy": "general_other_doc"
+    },
+    "relative_general_cert": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::relative.relative",
+      "inversedBy": "general_cert"
+    },
+    "applicant_PowerOfAttornyLawyer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "PowerOfAttornyLawyer"
+    },
+    "project_ArchivesVollmacht": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::project.project",
+      "inversedBy": "ArchivesVollmacht"
+    },
+    "applicant_PowerOfAttornyKid": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "power_of_attorny_kid"
+    },
+    "MeldungsKarte_original_citizen": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::original-citizen.original-citizen",
+      "inversedBy": "meldungs_karte_scans"
+    },
+    "MeldungsKarte_relative": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::relative.relative",
+      "inversedBy": "MeldungsKarte_doc"
+    },
+    "birth_cert_relative": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::relative.relative",
+      "mappedBy": "scan_birth_cert"
     }
   }
 }

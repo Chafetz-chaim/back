@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "previous_marriges",
+  "info": {
+    "singularName": "previous-marrige",
+    "pluralName": "previous-marriges",
+    "displayName": "previousMarrige"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "from": {
+      "type": "date"
+    },
+    "until": {
+      "type": "date"
+    },
+    "applicant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::applicant.applicant",
+      "inversedBy": "previous_marriges"
+    },
+    "relative": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::relative.relative",
+      "inversedBy": "previous_marriges"
+    }
+  }
+}

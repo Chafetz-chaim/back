@@ -35,6 +35,90 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "my"
+    },
+    "attach": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "mid_gen"
+    },
+    "birthCertificate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "mid_gen_birthCertificate"
+    },
+    "marriage_certificate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "marriage_certificate_midgen"
+    },
+    "marriage_certificate_translate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "mid_gen_marriage_certificate_translate"
+    },
+    "divorce_certifacate_translate": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scan.scan",
+      "mappedBy": "mid_gen_divorce_certifacate_translate"
+    },
+    "divorce_certifacate": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scan.scan",
+      "mappedBy": "mid_gen_divorce_certifacate"
+    },
+    "tamtzit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "tamtzit_mid_gen"
+    },
+    "name_change_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "name_change_cert_mid_gen"
+    },
+    "deth_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "deth_cert_mid_gen"
+    },
+    "phisical_birth_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "mid_gen_phisical_birth_cert"
+    },
+    "original_copy_of_m_cerf": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "original_copy_of_m_cerf_mid_gen"
+    },
+    "signed_translated_m_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "signed_translated_m_cert_mid_gen"
+    },
+    "d_cert_phisical_doc": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "d_cert_mid_gen"
+    },
+    "d_cert_trans_phisical_doc": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "d_cert_trans_mid_gen"
     }
   }
 }

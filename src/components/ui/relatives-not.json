@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_ui_relatives_nots",
+  "info": {
+    "displayName": "relativesNot",
+    "icon": "command"
+  },
+  "options": {},
+  "attributes": {
+    "relative": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::relative.relative"
+    },
+    "kind": {
+      "type": "enumeration",
+      "enum": [
+        "father",
+        "mother"
+      ]
+    },
+    "areMariege": {
+      "type": "boolean"
+    },
+    "areDevorced": {
+      "type": "boolean"
+    }
+  }
+}

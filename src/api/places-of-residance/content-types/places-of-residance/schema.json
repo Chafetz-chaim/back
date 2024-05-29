@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "places_of_residances",
+  "info": {
+    "singularName": "places-of-residance",
+    "pluralName": "places-of-residances",
+    "displayName": "placesOfResidance"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "country": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::country.country",
+      "inversedBy": "places_of_residances"
+    },
+    "city": {
+      "type": "string"
+    },
+    "since": {
+      "type": "date"
+    },
+    "until": {
+      "type": "date"
+    },
+    "applicant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::applicant.applicant",
+      "inversedBy": "places_of_residances"
+    },
+    "relative": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::relative.relative",
+      "inversedBy": "places_of_residances"
+    }
+  }
+}

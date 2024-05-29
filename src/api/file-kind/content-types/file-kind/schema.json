@@ -19,6 +19,12 @@
       "relation": "manyToMany",
       "target": "api::scan.scan",
       "inversedBy": "file_kinds"
+    },
+    "phisical_docs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::phisical-doc.phisical-doc",
+      "mappedBy": "file_kind"
     }
   }
 }

@@ -1,0 +1,94 @@
+{
+  "kind": "collectionType",
+  "collectionName": "relatives",
+  "info": {
+    "singularName": "relative",
+    "pluralName": "relatives",
+    "displayName": "relative",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "surName": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "previousNames": {
+      "type": "string"
+    },
+    "birthDate": {
+      "type": "date"
+    },
+    "cityOfBirth": {
+      "type": "string"
+    },
+    "birthCountry": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::country.country",
+      "inversedBy": "relatives"
+    },
+    "previous_marriges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::previous-marrige.previous-marrige",
+      "mappedBy": "relative"
+    },
+    "citizenships": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::citizenship.citizenship",
+      "mappedBy": "relative"
+    },
+    "places_of_residances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::places-of-residance.places-of-residance",
+      "mappedBy": "relative"
+    },
+    "dateOfDeth": {
+      "type": "date"
+    },
+    "proofof33_45residancy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "relative_proofof33_45residancy"
+    },
+    "general_cert": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scan.scan",
+      "mappedBy": "relative_general_cert"
+    },
+    "MeldungsKarte_doc": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scan.scan",
+      "mappedBy": "MeldungsKarte_relative"
+    },
+    "scan_birth_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "birth_cert_relative"
+    },
+    "phisical_doc_birth_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::phisical-doc.phisical-doc",
+      "inversedBy": "birth_cert_relative"
+    },
+    "links": {
+      "type": "text"
+    },
+    "info": {
+      "type": "text"
+    }
+  }
+}

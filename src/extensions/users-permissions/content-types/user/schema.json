@@ -71,12 +71,6 @@
       "target": "api::scan.scan",
       "mappedBy": "users_permissions_users"
     },
-    "german_deporters": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::german-deporter.german-deporter",
-      "mappedBy": "users_permissions_users"
-    },
     "projects": {
       "type": "relation",
       "relation": "manyToMany",
@@ -104,6 +98,18 @@
       "relation": "oneToOne",
       "target": "api::mid-gen.mid-gen",
       "mappedBy": "me"
+    },
+    "applicant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "users_permissions_user"
+    },
+    "customers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::customer.customer",
+      "mappedBy": "users_permissions_users"
     }
   }
 }

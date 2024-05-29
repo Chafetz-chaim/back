@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "citizenships",
+  "info": {
+    "singularName": "citizenship",
+    "pluralName": "citizenships",
+    "displayName": "citizenship",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "country": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::country.country",
+      "inversedBy": "citizenships"
+    },
+    "acquisitionDate": {
+      "type": "date"
+    },
+    "acquiringReason": {
+      "type": "enumeration",
+      "enum": [
+        "ancestry",
+        "naturalization"
+      ]
+    },
+    "isValide": {
+      "type": "boolean",
+      "default": true
+    },
+    "applicant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::applicant.applicant",
+      "inversedBy": "citizenships"
+    },
+    "relative": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::relative.relative",
+      "inversedBy": "citizenships"
+    },
+    "passport": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scan.scan",
+      "inversedBy": "passport_scan"
+    }
+  }
+}

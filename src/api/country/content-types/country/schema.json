@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "countries",
+  "info": {
+    "singularName": "country",
+    "pluralName": "countries",
+    "displayName": "country"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "applicants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::applicant.applicant",
+      "mappedBy": "countryOfResidency"
+    },
+    "citizenships": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::citizenship.citizenship",
+      "mappedBy": "country"
+    },
+    "places_of_residances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::places-of-residance.places-of-residance",
+      "mappedBy": "country"
+    },
+    "relatives": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::relative.relative",
+      "mappedBy": "birthCountry"
+    }
+  }
+}

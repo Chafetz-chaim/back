@@ -1,0 +1,132 @@
+{
+  "kind": "collectionType",
+  "collectionName": "phisical_docs",
+  "info": {
+    "singularName": "phisical-doc",
+    "pluralName": "phisical-docs",
+    "displayName": "phisicalDoc"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "file_kind": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::file-kind.file-kind",
+      "inversedBy": "phisical_docs"
+    },
+    "arrived": {
+      "type": "boolean"
+    },
+    "arriveInIsrael": {
+      "type": "boolean"
+    },
+    "sendedToAuthorities": {
+      "type": "boolean"
+    },
+    "sendedToTranslate": {
+      "type": "boolean"
+    },
+    "applicant_phisical_birth_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "phisical_birth_cert"
+    },
+    "mid_gen_phisical_birth_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "phisical_birth_cert"
+    },
+    "original_citizen_phisical_birth_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "phisical_birth_cert"
+    },
+    "original_copy_of_m_cerf_applicant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "original_copy_of_m_cerf"
+    },
+    "original_copy_of_m_cerf_mid_gen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "original_copy_of_m_cerf"
+    },
+    "original_copy_of_m_cerf_original_citizen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "original_copy_of_m_cerf"
+    },
+    "applicant_signed_translated_m_cert": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "signed_translated_m_cert"
+    },
+    "signed_translated_m_cert_mid_gen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "signed_translated_m_cert"
+    },
+    "signed_translated_m_cert_original_citizen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "signed_translated_m_cert"
+    },
+    "d_cert_original_citizen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "d_cert"
+    },
+    "d_cert_applicant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "d_cert_phisical_doc"
+    },
+    "d_cert_mid_gen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "d_cert_phisical_doc"
+    },
+    "d_cert_trans_mid_gen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "d_cert_trans_phisical_doc"
+    },
+    "cert_d_trans_original_citizen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::original-citizen.original-citizen",
+      "mappedBy": "phisical_doc_cert_d_trans"
+    },
+    "cert_d_trans_applicant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::applicant.applicant",
+      "mappedBy": "phisical_doc_cert_d_trans"
+    },
+    "birth_cert_relative": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::relative.relative",
+      "mappedBy": "phisical_doc_birth_cert"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_ui_relative_germen",
+  "info": {
+    "displayName": "relativeGerman",
+    "icon": "sun"
+  },
+  "options": {},
+  "attributes": {
+    "german_relative": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::german-relative.german-relative"
+    },
+    "relationType": {
+      "type": "string"
+    }
+  }
+}
