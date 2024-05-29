@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mid_gens",
+  "info": {
+    "singularName": "mid-gen",
+    "pluralName": "mid-gens",
+    "displayName": "midGen",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "mid_gens"
+    },
+    "scans": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::scan.scan",
+      "inversedBy": "mid_gens"
+    },
+    "me": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "my"
+    }
+  }
+}
