@@ -9,7 +9,7 @@ services:
     autoDeploy: false
     envVars:
       - key: NODE_VERSION
-        value: ~16.13.0
+        value: ~18.20.2
       - key: NODE_ENV
         value: production
       - key: CLOUDINARY_NAME
