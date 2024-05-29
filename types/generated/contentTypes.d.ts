@@ -979,6 +979,7 @@ export interface ApiScanScan extends Schema.CollectionType {
     singularName: 'scan';
     pluralName: 'scans';
     displayName: 'scan';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1016,6 +1017,8 @@ export interface ApiScanScan extends Schema.CollectionType {
       'manyToMany',
       'api::mid-gen.mid-gen'
     >;
+    uploaded: Attribute.Boolean;
+    approved: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

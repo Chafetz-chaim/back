@@ -4,7 +4,8 @@
   "info": {
     "singularName": "scan",
     "pluralName": "scans",
-    "displayName": "scan"
+    "displayName": "scan",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,14 +27,15 @@
       ]
     },
     "file": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "users_permissions_users": {
       "type": "relation",
@@ -58,6 +60,12 @@
       "relation": "manyToMany",
       "target": "api::mid-gen.mid-gen",
       "mappedBy": "scans"
+    },
+    "uploaded": {
+      "type": "boolean"
+    },
+    "approved": {
+      "type": "boolean"
     }
   }
 }
