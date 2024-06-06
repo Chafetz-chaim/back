@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leads",
+  "info": {
+    "singularName": "lead",
+    "pluralName": "leads",
+    "displayName": "lead"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "amountOfAplicant": {
+      "type": "integer"
+    },
+    "amountOfMinorAplicant": {
+      "type": "integer"
+    },
+    "amountOfPotential": {
+      "type": "integer"
+    },
+    "customers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::customer.customer",
+      "inversedBy": "leads"
+    }
+  }
+}

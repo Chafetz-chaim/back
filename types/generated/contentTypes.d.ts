@@ -1127,6 +1127,7 @@ export interface ApiCustomerCustomer extends Schema.CollectionType {
     singularName: 'customer';
     pluralName: 'customers';
     displayName: 'customer';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1148,7 +1149,7 @@ export interface ApiCustomerCustomer extends Schema.CollectionType {
       'manyToMany',
       'api::project.project'
     >;
-    lastName: Attribute.String;
+    surname: Attribute.String;
     phoneNumber: Attribute.String;
     email: Attribute.Email;
     refferers: Attribute.Relation<
@@ -1156,6 +1157,14 @@ export interface ApiCustomerCustomer extends Schema.CollectionType {
       'manyToMany',
       'api::refferer.refferer'
     >;
+    leads: Attribute.Relation<
+      'api::customer.customer',
+      'manyToMany',
+      'api::lead.lead'
+    >;
+    countryCodePhone: Attribute.String;
+    birth: Attribute.Date;
+    address: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1285,6 +1294,35 @@ export interface ApiGermanRelativeGermanRelative extends Schema.CollectionType {
   };
 }
 
+export interface ApiLeadLead extends Schema.CollectionType {
+  collectionName: 'leads';
+  info: {
+    singularName: 'lead';
+    pluralName: 'leads';
+    displayName: 'lead';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    amountOfAplicant: Attribute.Integer;
+    amountOfMinorAplicant: Attribute.Integer;
+    amountOfPotential: Attribute.Integer;
+    customers: Attribute.Relation<
+      'api::lead.lead',
+      'manyToMany',
+      'api::customer.customer'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::lead.lead', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::lead.lead', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMidGenMidGen extends Schema.CollectionType {
   collectionName: 'mid_gens';
   info: {
@@ -1298,7 +1336,7 @@ export interface ApiMidGenMidGen extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    lastName: Attribute.String;
+    sureName: Attribute.String;
     users_permissions_users: Attribute.Relation<
       'api::mid-gen.mid-gen',
       'manyToMany',
@@ -1420,7 +1458,7 @@ export interface ApiOriginalCitizenOriginalCitizen
     };
   };
   attributes: {
-    suraname: Attribute.String &
+    surname: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1666,6 +1704,24 @@ export interface ApiOriginalCitizenOriginalCitizen
         };
       }>;
     info: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    dateOfDenialText: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    yearOfDenialText: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    lastAddress: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -2364,6 +2420,7 @@ declare module '@strapi/types' {
       'api::file-kind.file-kind': ApiFileKindFileKind;
       'api::first-person-in-germany.first-person-in-germany': ApiFirstPersonInGermanyFirstPersonInGermany;
       'api::german-relative.german-relative': ApiGermanRelativeGermanRelative;
+      'api::lead.lead': ApiLeadLead;
       'api::mid-gen.mid-gen': ApiMidGenMidGen;
       'api::original-citizen.original-citizen': ApiOriginalCitizenOriginalCitizen;
       'api::phisical-doc.phisical-doc': ApiPhisicalDocPhisicalDoc;

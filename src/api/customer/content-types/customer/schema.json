@@ -4,7 +4,8 @@
   "info": {
     "singularName": "customer",
     "pluralName": "customers",
-    "displayName": "customer"
+    "displayName": "customer",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -32,7 +33,7 @@
       "target": "api::project.project",
       "inversedBy": "customers"
     },
-    "lastName": {
+    "surname": {
       "type": "string"
     },
     "phoneNumber": {
@@ -46,6 +47,21 @@
       "relation": "manyToMany",
       "target": "api::refferer.refferer",
       "mappedBy": "customers"
+    },
+    "leads": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::lead.lead",
+      "mappedBy": "customers"
+    },
+    "countryCodePhone": {
+      "type": "string"
+    },
+    "birth": {
+      "type": "date"
+    },
+    "address": {
+      "type": "string"
     }
   }
 }

@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "suraname": {
+    "surname": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -342,6 +342,30 @@
         }
       },
       "type": "text"
+    },
+    "dateOfDenialText": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "yearOfDenialText": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "lastAddress": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }
