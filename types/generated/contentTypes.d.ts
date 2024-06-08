@@ -1319,6 +1319,7 @@ export interface ApiLeadLead extends Schema.CollectionType {
       'manyToMany',
       'api::project.project'
     >;
+    files: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -32,6 +32,16 @@
       "relation": "manyToMany",
       "target": "api::project.project",
       "inversedBy": "leads"
+    },
+    "files": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
