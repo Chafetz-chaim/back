@@ -1733,6 +1733,18 @@ export interface ApiOriginalCitizenOriginalCitizen
           localized: true;
         };
       }>;
+    placeOfBirth: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    dateOfDenialLead: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

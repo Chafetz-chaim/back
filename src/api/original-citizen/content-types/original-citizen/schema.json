@@ -366,6 +366,22 @@
         }
       },
       "type": "string"
+    },
+    "placeOfBirth": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "dateOfDenialLead": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
     }
   }
 }
