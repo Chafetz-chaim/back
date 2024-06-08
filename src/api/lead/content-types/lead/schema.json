@@ -4,7 +4,8 @@
   "info": {
     "singularName": "lead",
     "pluralName": "leads",
-    "displayName": "lead"
+    "displayName": "lead",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,6 +25,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::customer.customer",
+      "inversedBy": "leads"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
       "inversedBy": "leads"
     }
   }

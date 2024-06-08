@@ -51,6 +51,15 @@
       "relation": "oneToMany",
       "target": "api::scan.scan",
       "mappedBy": "project_ArchivesVollmacht"
+    },
+    "name": {
+      "type": "string"
+    },
+    "leads": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::lead.lead",
+      "mappedBy": "projects"
     }
   }
 }

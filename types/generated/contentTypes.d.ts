@@ -1300,6 +1300,7 @@ export interface ApiLeadLead extends Schema.CollectionType {
     singularName: 'lead';
     pluralName: 'leads';
     displayName: 'lead';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1312,6 +1313,11 @@ export interface ApiLeadLead extends Schema.CollectionType {
       'api::lead.lead',
       'manyToMany',
       'api::customer.customer'
+    >;
+    projects: Attribute.Relation<
+      'api::lead.lead',
+      'manyToMany',
+      'api::project.project'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -2002,6 +2008,12 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::project.project',
       'oneToMany',
       'api::scan.scan'
+    >;
+    name: Attribute.String;
+    leads: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::lead.lead'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
