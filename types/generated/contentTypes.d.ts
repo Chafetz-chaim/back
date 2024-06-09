@@ -1165,6 +1165,9 @@ export interface ApiCustomerCustomer extends Schema.CollectionType {
     countryCodePhone: Attribute.String;
     birth: Attribute.Date;
     address: Attribute.String;
+    midGenLevel: Attribute.Enumeration<
+      ['first', 'second', 'third', 'forth', 'fifth']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
