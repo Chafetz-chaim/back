@@ -119,6 +119,97 @@
       "relation": "oneToOne",
       "target": "api::phisical-doc.phisical-doc",
       "inversedBy": "d_cert_trans_mid_gen"
+    },
+    "needBirth": {
+      "type": "boolean"
+    },
+    "fcBirth": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "needDiv": {
+      "type": "boolean"
+    },
+    "fcDiv": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "needMar": {
+      "type": "boolean"
+    },
+    "fcMar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "needDeathCert": {
+      "type": "boolean"
+    },
+    "fcDeathCert": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "needProofOfFatherhood": {
+      "type": "boolean"
+    },
+    "fcProofOfFatherhood": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "needNameChange": {
+      "type": "boolean"
+    },
+    "fcNameChange": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "needMultipleGeneral": {
+      "type": "boolean"
+    },
+    "fcMultipleGeneral": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

@@ -272,6 +272,132 @@
       "relation": "oneToOne",
       "target": "api::phisical-doc.phisical-doc",
       "inversedBy": "cert_d_trans_applicant"
+    },
+    "needPassport": {
+      "type": "boolean"
+    },
+    "needSecPassport": {
+      "type": "boolean"
+    },
+    "needBirth": {
+      "type": "boolean"
+    },
+    "needMar": {
+      "type": "boolean"
+    },
+    "needDiv": {
+      "type": "boolean"
+    },
+    "needProofOfFatherhood": {
+      "type": "boolean"
+    },
+    "needNameChangeScan": {
+      "type": "boolean"
+    },
+    "needMultipleGeneral": {
+      "type": "boolean"
+    },
+    "needRegistrationSummary": {
+      "type": "boolean"
+    },
+    "fcPassport": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fcSecPassport": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fcBirth": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fcMar": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fcDiv": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fcProofOfFatherhood": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fcNameChange": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fcRegistrationSummary": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fcMultipleGeneral": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

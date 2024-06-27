@@ -1000,6 +1000,24 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
       'oneToOne',
       'api::phisical-doc.phisical-doc'
     >;
+    needPassport: Attribute.Boolean;
+    needSecPassport: Attribute.Boolean;
+    needBirth: Attribute.Boolean;
+    needMar: Attribute.Boolean;
+    needDiv: Attribute.Boolean;
+    needProofOfFatherhood: Attribute.Boolean;
+    needNameChangeScan: Attribute.Boolean;
+    needMultipleGeneral: Attribute.Boolean;
+    needRegistrationSummary: Attribute.Boolean;
+    fcPassport: Attribute.Media;
+    fcSecPassport: Attribute.Media;
+    fcBirth: Attribute.Media;
+    fcMar: Attribute.Media;
+    fcDiv: Attribute.Media;
+    fcProofOfFatherhood: Attribute.Media;
+    fcNameChange: Attribute.Media;
+    fcRegistrationSummary: Attribute.Media;
+    fcMultipleGeneral: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1432,6 +1450,20 @@ export interface ApiMidGenMidGen extends Schema.CollectionType {
       'oneToOne',
       'api::phisical-doc.phisical-doc'
     >;
+    needBirth: Attribute.Boolean;
+    fcBirth: Attribute.Media;
+    needDiv: Attribute.Boolean;
+    fcDiv: Attribute.Media;
+    needMar: Attribute.Boolean;
+    fcMar: Attribute.Media;
+    needDeathCert: Attribute.Boolean;
+    fcDeathCert: Attribute.Media;
+    needProofOfFatherhood: Attribute.Boolean;
+    fcProofOfFatherhood: Attribute.Media;
+    needNameChange: Attribute.Boolean;
+    fcNameChange: Attribute.Media;
+    needMultipleGeneral: Attribute.Boolean;
+    fcMultipleGeneral: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1744,6 +1776,162 @@ export interface ApiOriginalCitizenOriginalCitizen
         };
       }>;
     dateOfDenialLead: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needBirth: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcBirth: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needDeathCert: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcDeathCert: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needIsraeliPassport: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcIsraeliPassport: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needOldPassport: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcOldPassport: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needDiv: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcDiv: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needMar: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcMar: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needRegistrationSummary: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcRegistrationSummary: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needProofOfFatherhood: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcProofOfFatherhood: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needNameChange: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcNameChange: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needMultipeFromGermany: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcMultipeFromGermany: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needMultipeFromIsrael: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcMultipeFromIsrael: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needMultipleFromTravel: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcMultipleFromTravel: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    needMultipleGeneral: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fcMultipleGeneral: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
