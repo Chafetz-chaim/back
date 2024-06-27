@@ -833,7 +833,7 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
   };
   attributes: {
     firstName: Attribute.String;
-    SuranameName: Attribute.String;
+    surname: Attribute.String;
     users_permissions_user: Attribute.Relation<
       'api::applicant.applicant',
       'oneToOne',
@@ -1006,7 +1006,7 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
     needMar: Attribute.Boolean;
     needDiv: Attribute.Boolean;
     needProofOfFatherhood: Attribute.Boolean;
-    needNameChangeScan: Attribute.Boolean;
+    needNameChange: Attribute.Boolean;
     needMultipleGeneral: Attribute.Boolean;
     needRegistrationSummary: Attribute.Boolean;
     fcPassport: Attribute.Media;
@@ -1363,8 +1363,8 @@ export interface ApiMidGenMidGen extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    sureName: Attribute.String;
+    firstName: Attribute.String;
+    surname: Attribute.String;
     users_permissions_users: Attribute.Relation<
       'api::mid-gen.mid-gen',
       'manyToMany',
@@ -1464,6 +1464,11 @@ export interface ApiMidGenMidGen extends Schema.CollectionType {
     fcNameChange: Attribute.Media;
     needMultipleGeneral: Attribute.Boolean;
     fcMultipleGeneral: Attribute.Media;
+    projects: Attribute.Relation<
+      'api::mid-gen.mid-gen',
+      'manyToMany',
+      'api::project.project'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2218,6 +2223,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::project.project',
       'manyToMany',
       'api::lead.lead'
+    >;
+    mid_gens: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::mid-gen.mid-gen'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

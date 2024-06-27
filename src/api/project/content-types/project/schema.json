@@ -60,6 +60,12 @@
       "relation": "manyToMany",
       "target": "api::lead.lead",
       "mappedBy": "projects"
+    },
+    "mid_gens": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::mid-gen.mid-gen",
+      "mappedBy": "projects"
     }
   }
 }

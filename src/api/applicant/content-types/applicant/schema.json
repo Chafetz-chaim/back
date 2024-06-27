@@ -15,7 +15,7 @@
     "firstName": {
       "type": "string"
     },
-    "SuranameName": {
+    "surname": {
       "type": "string"
     },
     "users_permissions_user": {
@@ -291,7 +291,7 @@
     "needProofOfFatherhood": {
       "type": "boolean"
     },
-    "needNameChangeScan": {
+    "needNameChange": {
       "type": "boolean"
     },
     "needMultipleGeneral": {
