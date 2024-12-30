@@ -1,19 +1,41 @@
-const { parse } = require("pg-connection-string");
 
-module.exports = ({ env }) => {
-  const { host, port, database, user, password } = parse(env("DATABASE_URL"));
-
-  return {
+module.exports = ({ env }) => ({
+  connection: {
+    client: 'postgres',
     connection: {
-      client: "postgres",
-      connection: {
-        host,
-        port,
-        database,
-        user,
-        password
-      },
-      debug: false,
+      host: env('DATABASE_HOST'),
+      port: env.int('DATABASE_PORT'),
+      database: env('DATABASE_NAME'),
+      user: env('DATABASE_USERNAME'),
+      password: env('DATABASE_PASSWORD'),
+      ssl:  {
+        rejectUnauthorized: true,
+        ca: `-----BEGIN CERTIFICATE-----
+MIIEQTCCAqmgAwIBAgIUAscXH1pDaGlqplcmNikj0kc/w7swDQYJKoZIhvcNAQEM
+BQAwOjE4MDYGA1UEAwwvMDhkOGE5ZGItOTU0OC00YjRhLWIyODAtMTlhMjljNjNj
+M2JkIFByb2plY3QgQ0EwHhcNMjQxMjMwMTYwMTM0WhcNMzQxMjI4MTYwMTM0WjA6
+MTgwNgYDVQQDDC8wOGQ4YTlkYi05NTQ4LTRiNGEtYjI4MC0xOWEyOWM2M2MzYmQg
+UHJvamVjdCBDQTCCAaIwDQYJKoZIhvcNAQEBBQADggGPADCCAYoCggGBAMiB1xhU
+eEqqXRbSpAN1UCs8JFa9q/Va4QSwqtg5FW8whhMHmD4Wa5vPrWwhOumSHiymZ0kD
+r8q328a8QQWlaEgMHx4VNxLwZGuhKZvx+8KFFUm01Has66+TQBdc93lf9YLtB1KP
+lwROXW/MVFkxh7btA/HRIew6ZAYPMZ0enL/GrIpTemSX4zdecW6cJm/neJIFRE1g
+T1utiaF0dIf94vN9B14vYU1P/ysRZDB4jTux1RTvWsY4F9WGOgZzs3MJJp+R80Wl
+OBGWZdcUohHxIM9yWLwkhT1NsnIPWBeupabF/Jh+Nr2+9hP4Y0o/5PD0cU466zKG
+eItsw9ufot791CAYjmFxICYjSPmYHLdw6mii5E+GM1mQzKNPcR1LvUWTHe7NIaS1
+U42efXYGqfRFgttdXYQxyXIzgtMJNzjZfnzx8VOGeHDAGdOyNKGbEHYrzJX3fAT0
+7WMLcX4Sgvs5CoINXGatJ5LMvcWvUB0oNcIIizU988RC18gLk98BqfslQwIDAQAB
+oz8wPTAdBgNVHQ4EFgQUNfHLSs+Yqs6oJh14Sg9h9i9remAwDwYDVR0TBAgwBgEB
+/wIBADALBgNVHQ8EBAMCAQYwDQYJKoZIhvcNAQEMBQADggGBAMBzoFTsnd2pGS89
+vo3J3EAZMEj6KNHS3zz8DurvYmmKjYF2FFZnegiuh98/NGubz0d8ejTCUVJECaew
+HBe70WscPExV5LThVJuVYPG94R2xEczxApl/HGXt4Fvrceq8R5+fRRIqokY32NDI
+HRwMP5pPoheilUlFg08REhN4sQ9xAMlCCrzGQF4p4I3N9JDpO9IvFlmJ6pzM8e87
+NUduwFlf/o9FusjIZpTxSQ1z3LUgNmLEIQ8ys0phNpKq1Y09ohG2DxIms7ncTW9/
+sUpz43kpWNsmmjx0YCepogedrrJwIKGPg7hk+nqV6ZMt4izou3xKQq3LsT2PvMqY
+HC0/IqMvrjyPJJ6M6w6QoSQARsy4mAs8pgkU7vir478BRHhcW2Hs0wZqg+ld9I/O
+OZewf3GAn1mumhhfjFk3Qam7wO2jKgy0i4SqUs2oSdFDPYAxhmO7FYZYo6mIGIOn
+DDMMkQt7MG0mcbyUys4nj2tJiGvBHx0BPSTDxmj6oqEWfDnCFw==
+-----END CERTIFICATE-----`,
     },
-  };
-};
+    },
+  },
+});
